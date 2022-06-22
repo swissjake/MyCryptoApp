@@ -11,6 +11,7 @@ import Navbar from './components/navbar/Navbar';
 import axios from 'axios';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import Footer from './components/footer/Footer';
 
 function App() {
   const [coins, setCoins] = useState([])
@@ -45,6 +46,7 @@ function App() {
                 <Route path=":coinId" />
             </Route>
         </Routes>
+        <Footer />
     </ThemeProvider>
   );
 }

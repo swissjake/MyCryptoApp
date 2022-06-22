@@ -10,7 +10,7 @@ const Navbar = () => {
         setNav(!nav)
     }
   return (
-    <div className='rounded-div flex items-center justify-between h-20 font-bold px-[20px]'>
+    <div className='rounded-div flex items-center justify-between h-20 font-bold'>
         <Link to='/'>
             <h1 className='text-2xl leading-3'>Cryptobag</h1>
         </Link>

@@ -37,7 +37,7 @@ const TrendingCoins = () => {
                             </div>
                         </div>
                         <div className="flex items-center">
-                            <img className="w-4" src='https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579' alt="bitcoin_image" />
+                            <img className="w-4 mr-1" src='https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579' alt="bitcoin_image" />
                             <p>{coin.item.price_btc.toFixed(7)}</p>
                         </div>
                     </div>

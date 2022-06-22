@@ -34,9 +34,11 @@ const CoinSearch = ({coins}) => {
                         }else if(
                             value.name.toLowerCase().includes(search.toLowerCase())
                             
-                        ){
+                        )
+                        {
                             return value;
                         }
+                       
                     }).map((coin) => (
                         <CoinItem coin = {coin} key={coin.id}/>
                     ))}
