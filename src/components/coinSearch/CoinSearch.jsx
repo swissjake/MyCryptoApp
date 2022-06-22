@@ -1,8 +1,9 @@
 import React from 'react'
 import { useState } from 'react';
 import CoinItem from '../coinItem/CoinItem';
+import loader from '../../assets/loader.svg'
 
-const CoinSearch = ({coins}) => {
+const CoinSearch = ({coins, loading}) => {
     const[search, setSearch] = useState('');
     // console.log(coins)
   return (
@@ -13,6 +14,7 @@ const CoinSearch = ({coins}) => {
                 <input type="search" value={search} placeholder='Search coin here...' onChange={(e)=>setSearch(e.target.value)} className="w-full bg-primary border border-input px-4 py-2 rounded-2xl shadow-xl"/>
             </form>
             </div>
+           
             <table className='w-full border-collapse text-center'>
                 <thead>
                     <tr className='border-b'>
@@ -39,8 +41,8 @@ const CoinSearch = ({coins}) => {
                             return value;
                         }
                        
-                    }).map((coin) => (
-                        <CoinItem coin = {coin} key={coin.id}/>
+                    }).map((coin) => (  
+                        <CoinItem loading={loading} coin = {coin} key={coin.id}/>
                     ))}
                 </tbody>
             </table>

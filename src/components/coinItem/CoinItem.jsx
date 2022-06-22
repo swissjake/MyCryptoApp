@@ -3,9 +3,10 @@ import {AiOutlineStar} from 'react-icons/ai'
 import { Link } from 'react-router-dom';
 import { Sparklines,SparklinesLine } from 'react-sparklines';
 
-const CoinItem = ({coin}) => {
+const CoinItem = ({coin, loading}) => {
 
   return (
+      
          <tr className='h-[80px] border-b overflow-hidden'>
             <td><AiOutlineStar /></td>
             <td>{coin.market_cap_rank}</td>
@@ -33,6 +34,7 @@ const CoinItem = ({coin}) => {
                 </Sparklines>
             </td>
         </tr>
+   
   )
 }
 

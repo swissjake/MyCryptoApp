@@ -1,4 +1,5 @@
 import React,{useState, useEffect} from 'react'
+import loader from '../../assets/loader.svg'
 import axios from 'axios'
 
 const TrendingCoins = () => {
@@ -24,7 +25,7 @@ const TrendingCoins = () => {
     return (
     <div className=' rounded-div my-12 p-8 text-primary'>
         <h1 className='text-2xl font-bold py-4'>Trending Coins</h1>
-        {loading && <h1>Loading.......</h1>}
+        {loading && <h1 className='flex justify-center'><img src={loader} alt="loading..." /></h1>}
        <div className='grid md:grid-cols-2 ld:grid-cols-3 gap-4'>
             {trendingCoins && trendingCoins.map((coin) => (
                 <div key={coin.item.coin_id} className='rounded-div flex justify-between p-4 hover:scale-105 ease-in-out duration-300 '>
