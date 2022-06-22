@@ -12,7 +12,7 @@ const Navbar = () => {
   return (
     <div className='rounded-div flex items-center justify-between h-20 font-bold'>
         <Link to='/'>
-            <h1 className='text-2xl leading-3'>Cryptobag</h1>
+            <h1 className='text-2xl leading-3'>MyWallet</h1>
         </Link>
         <div className='hidden md:block'>
             <ThemeToggle />
@@ -24,7 +24,7 @@ const Navbar = () => {
 
         {/* Menu icon */}
         <div onClick={handleNav} className='block md:hidden cursor-pointer z-10'>
-            {nav ? <AiOutlineMenu size={25} /> : <AiOutlineClose size={25} />}
+            {!nav ? <AiOutlineMenu size={25} /> : <AiOutlineClose size={25} />}
         </div>
 
         {/* mobile menu */}
@@ -43,8 +43,8 @@ const Navbar = () => {
                 </li>
             </ul>
             <div className='flex flex-col w-full p-4'>
-                <Link to="signin"><button className='w-full my-2 p-3 bg-primary text-primary border border-secondary rounded-2xl shadow-xl'>Sign In</button></Link>
-                <Link to="signup"><button className='w-full my-2 p-3 bg-button text-btnText rounded-2xl shadow-xl'>Sign Up</button></Link>
+                <Link onClick={() => setNav(false)} to="/signIn"><button className='w-full my-2 p-3 bg-primary text-primary border border-secondary rounded-2xl shadow-xl'>Sign In</button></Link>
+                <Link onClick={() => setNav(false)} to="/signUp"><button className='w-full my-2 p-3 bg-button text-btnText rounded-2xl shadow-xl'>Sign Up</button></Link>
             </div>
         </div>
     </div>
