@@ -1,9 +1,33 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { AiOutlineClose } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
+import {doc, onSnapshot, updateDoc,} from 'firebase/firestore'
+import { db } from '../../firebase-config'
+import { UserAuth } from '../../context/AuthContext'
 
 const SavedCoin = () => {
     const[coins, setCoins] = useState([])
+    const {user} = UserAuth()
+
+    useEffect(() => {
+      onSnapshot(doc(db, 'users', `${user.email}`),(doc) => {
+          setCoins(doc.data()?.watchList)
+      })
+    }, [user.email])
+
+    const coinPath = doc(db, 'users', `${user?.email}`)
+
+    const handleDelete = async(id) => {
+        try{
+            const result = coins.filter((item) => item.id !== id)
+            await updateDoc(coinPath, {
+                watchList: result
+            })
+        }catch (e){
+            console.log(e.message)
+        }
+    }
+    
   return (
     <div className='rounded-div my-8 py-8'>
        {coins && coins.length === 0 ? (<p>You dont have any coins saved. Please save a coin to add it to your watch list.<Link className='text-accent' to="/">Click here to search for coins now</Link></p>)
@@ -32,7 +56,7 @@ const SavedCoin = () => {
                                     </div>
                                 </Link>
                             </td>
-                            <td className='pl-8'>
+                            <td onClick={() => handleDelete(coin.id)} className='pl-8'>
                                 <AiOutlineClose className='cursor-pointer'/>
                             </td>
                         </tr>

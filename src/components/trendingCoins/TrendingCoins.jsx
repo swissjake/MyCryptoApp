@@ -23,7 +23,7 @@ const TrendingCoins = () => {
        
 
     return (
-    <div className=' rounded-div my-12 p-8 text-primary'>
+    <div className=' rounded-div my-12 p-8 text-primary animate__animated animate__backInRight'>
         <h1 className='text-2xl font-bold py-4'>Trending Coins</h1>
         {loading && <h1 className='flex justify-center'><img src={loader} alt="loading..." /></h1>}
        <div className='grid md:grid-cols-2 ld:grid-cols-3 gap-4'>

@@ -3,7 +3,7 @@ import './App.css';
 import HomePage from './pages/homePage/HomePage'
 import Account from './pages/account/Account'
 import CoinPage from './pages/coinPage/CoinPage'
-import SignIn from './pages/signIn/SignIn'
+import Signin from './pages/signIn/SignIn'
 import SignUp from './pages/signUp/SignUp'
 import {ThemeProvider} from './context/ThemeContext'
 import {Routes, Route} from 'react-router-dom'
@@ -15,8 +15,6 @@ import Footer from './components/footer/Footer';
 
 function App() {
   const [coins, setCoins] = useState([])
-
-
 
   const url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1&sparkline=true'
 
@@ -41,8 +39,8 @@ function App() {
         <Routes>
          
             <Route path='/' element={<HomePage coins={coins} />}/>
-            <Route path='/account' element={<Account />}/>
-            <Route path='/signIn' element={<SignIn />}/>
+           <Route path='/account' element={<Account />}/>
+            <Route path='/signIn' element={<Signin />}/>
             <Route path='/signUp' element={<SignUp />}/>
             <Route path="/coin/:coinId" element={<CoinPage />}>
                 <Route path=":coinId" />

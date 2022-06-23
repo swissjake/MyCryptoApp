@@ -7,7 +7,7 @@ const CoinSearch = ({coins, loading}) => {
     const[search, setSearch] = useState('');
     // console.log(coins)
   return (
-    <div className='rounded-div my-4 p-8'>
+    <div className='rounded-div my-4 p-8 animate__animated animate__zoomInDown animate__delay-2s'>
         <div className='flex flex-col md:flex-row justify-between pt-4 pb-6 text-center md:text-right'>
             <h1 className='text-2xl font-bold my-2 '>Search Crypto</h1>
             <form action="">
