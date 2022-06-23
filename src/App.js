@@ -1,17 +1,17 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import { lazy, Suspense } from 'react';
 import './App.css';
-import HomePage from './pages/homePage/HomePage'
-import Account from './pages/account/Account'
-import CoinPage from './pages/coinPage/CoinPage'
-import Signin from './pages/signIn/SignIn'
-import SignUp from './pages/signUp/SignUp'
 import {ThemeProvider} from './context/ThemeContext'
 import {Routes, Route} from 'react-router-dom'
 import Navbar from './components/navbar/Navbar';
 import axios from 'axios';
-import { useState } from 'react';
-import { useEffect } from 'react';
 import Footer from './components/footer/Footer';
+import loader2 from './assets/loader2.svg'
+const HomePage = lazy(() =>import('./pages/homePage/HomePage'))
+const Account = lazy(() =>import( './pages/account/Account'))
+const CoinPage = lazy(() =>import ('./pages/coinPage/CoinPage'))
+const Signin = lazy(() => import ('./pages/signIn/SignIn'))
+const SignUp = lazy(() => import ('./pages/signUp/SignUp'))
 
 function App() {
   const [coins, setCoins] = useState([])
@@ -34,8 +34,12 @@ function App() {
   
 
   return (
+    <div className=''>
+    <Suspense fallback = {<div className='fixed h-full w-full transition duration-300 ease-linear flex'><img src={loader2} className='m-auto' alt="/"/></div>}>
     <ThemeProvider>
+      
        <Navbar />
+      
         <Routes>
          
             <Route path='/' element={<HomePage coins={coins} />}/>
@@ -47,7 +51,10 @@ function App() {
             </Route>
         </Routes>
         <Footer />
+       
     </ThemeProvider>
+    </Suspense>
+    </div>
   );
 }
 
